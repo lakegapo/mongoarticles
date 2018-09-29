@@ -1,0 +1,25 @@
+
+ {{#each article}}
+<div class="row justify-content-center">
+    <div class="col-md-10 articleMain">
+        <div class="articleWrapper">
+            <div class="row justify-content-center">
+                <div class="col-lg-4">
+                    <a href={{link}} target="_blank">
+                        <img class="articleImage" src={{image}}>
+                    </a>
+                </div>
+                <div class="col-lg-8">
+                    <h1 class="articleHeadline">{{title}}</h1>
+                    <h2 class="articleAuthor">{{author}}</h2>
+                    <h2 class="articleTime">{{createdAt}}</h2>
+                    <span>
+                        <a class="articleLink" href={{link}} target="_blank">View Full Story</a>
+                        <a class="articleComment" href="/read/{{this._id}}">Comment</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{/each}}

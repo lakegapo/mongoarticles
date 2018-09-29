@@ -1,0 +1,70 @@
+<div class="row justify-content-center">
+    <div class="col-md-10 articleMain">
+        <div class="articleWrapper">
+            <div class="row justify-content-center">
+                <div class="col-lg-4">
+                    <a href={{articlePrev.article.link}} target="_blank">
+                        
+                    </a>
+                </div>
+                <div class="col-lg-8">
+                    <h1 class="articleHeadline">{{{articlePrev.article.title}}}</h1>
+                    <h2 class="articleAuthor">{{articlePrev.article.author}}</h2>
+                    <h2 class="articleTime">{{articlePrev.article.createdAt}}</h2>
+                    <span>
+                        <a class="articleLink" href="{{articlePrev.article.link}}" target="_blank">View Full Story</a>
+                    </span>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-auto">
+                    <div class="text-wrapper">
+                        <p class="articleBody">"{{articlePrev.summary}}"</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-auto">
+                    <h3 class="description">Comments</h3>
+                </div>
+            </div>
+            {{#if articlePrev.article.comment}} {{#each articlePrev.article.comment}}
+            <div class="row justify-content-center userCommentSection">
+                <div class="col-md-2">
+                    <p class="userName">{{name}}:</p>
+                </div>
+                <div class="col-md-6">
+                    <p class="userComment">"{{comment}}"</p>
+                </div>
+                <div class="col-md-2">
+                    <form action="/deletecomment/{{_id}}" method="GET">
+                        <button class="deleteComment">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            {{/each}} {{else}}
+            <p class="noComment">Be the first to comment!</p>
+            {{/if}}
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-10 formWrapper">
+        <h2 class="commentFormHeader">Leave a comment</h2>
+        <form action="/comment/{{articlePrev.article._id}}" method="POST">
+            <div class="form-group">
+                <label for="userName">Name</label>
+                <input type="text" class="form-control" id="userName" name="name" placeholder="Enter name here">
+            </div>
+            <div class="form-group">
+                <label for="userComment">Comment</label>
+                <textarea type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" name="comment"></textarea>
+            </div>
+            <button type="submit" value="submit" id="submitButton" class="btn">Post</button>
+
+        </form>
+    </div>
+</div>
